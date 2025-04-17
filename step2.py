@@ -44,11 +44,15 @@ from sklearn.preprocessing import LabelEncoder
 label_cols = ['item_purchased', 'payment_method']
 label_encoders = {}
 
+# 对每个列进行编码，保存编码器
+# 为什么要进行编码？
+# 因为分类变量的值可能会影响模型的性能，因此需要进行编码
 for col in label_cols:
     le = LabelEncoder()
     df[col + '_encoded'] = le.fit_transform(df[col])
     label_encoders[col] = le  # 保存编码器以便后续使用/反编码
 
+# 打印编码后的类别，以便检查，看看有哪些类别，有多少个，有哪些值
 print(label_encoders['item_purchased'].classes_)
 
 ## 步骤二： 创建新特征 - 日期拆解
@@ -62,7 +66,7 @@ df['purchase_day'] = df['date_purchase'].dt.day
 df['avg_spend_per_customer'] = df.groupby('customer_reference_id')['purchase_amount'].transform('mean').round(2)
 
 # 打印处理后的数据
-# print(df.head())
+print(df.head())
 
 # 保存处理后的数据
-# df.to_csv('processed_data.csv', index=False)
+df.to_csv('processed_data.csv', index=False)
