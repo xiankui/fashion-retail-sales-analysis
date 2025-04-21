@@ -61,3 +61,7 @@
 - 拆分训练集与测试集
 - 可视化预测 vs 实际对比
 - 用 RMSE（均方根误差）验证模型好坏
+
+## 查看完整的 Jupyter 项目
+
+`Jupyter notebook Fashion_Retail_Analysis.ipynb`
